@@ -11,7 +11,7 @@ from twitter import *
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -35,7 +35,7 @@ query = twitter.friends.ids(screen_name = username)
 # note that the twitter API will NOT immediately give us any more 
 # information about friends except their numeric IDs...
 #-----------------------------------------------------------------------
-print "found %d friends" % (len(query["ids"]))
+print("found %d friends" % (len(query["ids"])))
 
 #-----------------------------------------------------------------------
 # now we loop through them to pull out more info, in blocks of 100.
@@ -53,5 +53,5 @@ for n in range(0, len(query["ids"]), 100):
 		#-----------------------------------------------------------------------
 		# now print out user info, starring any users that are Verified.
 		#-----------------------------------------------------------------------
-		print " [%s] %s" % ("*" if user["verified"] else " ", user["screen_name"])
+		print(" [%s] %s" % ("*" if user["verified"] else " ", user["screen_name"]))
 

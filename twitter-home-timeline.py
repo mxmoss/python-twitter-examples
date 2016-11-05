@@ -12,7 +12,7 @@ from twitter import *
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -30,4 +30,4 @@ statuses = twitter.statuses.home_timeline(count = 50)
 # loop through each of my statuses, and print its content
 #-----------------------------------------------------------------------
 for status in statuses:
-	print "(%s) @%s %s" % (status["created_at"], status["user"]["screen_name"], status["text"])
+	print("(%s) @%s %s" % (status["created_at"], status["user"]["screen_name"], status["text"]))

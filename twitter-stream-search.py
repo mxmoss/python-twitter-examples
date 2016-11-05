@@ -4,6 +4,7 @@
 # twitter-stream-format:
 #  - ultra-real-time stream of twitter's public timeline.
 #    does some fancy output formatting.
+#  Under Windows cmd, run this first: set PYTHONIOENCODING=:replace
 #-----------------------------------------------------------------------
 
 from twitter import *
@@ -26,7 +27,7 @@ from email.utils import parsedate
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -61,5 +62,5 @@ for tweet in tweet_iter:
 	text_colored = fill(text_colored, 80, initial_indent = indent, subsequent_indent = indent)
 
 	# now output our tweet
-	print "(%s) @%s" % (time_colored, user_colored)
-	print "%s" % (text_colored)
+	print("(%s) @%s" % (time_colored, user_colored))
+	print("%s" % (text_colored))

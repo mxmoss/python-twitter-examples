@@ -2,7 +2,7 @@
 
 #-----------------------------------------------------------------------
 # twitter-search-geo
-#  - performs a search for tweets close to New Cross, and outputs
+#  - performs a search for tweets close to portland, OR, and outputs
 #    them to a CSV file.
 #-----------------------------------------------------------------------
 
@@ -11,8 +11,8 @@ from twitter import *
 import sys
 import csv
 
-latitude = 51.474144	# geographical centre of search
-longitude = -0.035401	# geographical centre of search
+latitude = 45.523452	# geographical centre of search
+longitude = -122.676207	# geographical centre of search
 max_range = 1 			# search range in kilometres
 num_results = 500		# minimum results to obtain
 outfile = "output.csv"
@@ -21,7 +21,7 @@ outfile = "output.csv"
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -32,7 +32,7 @@ twitter = Twitter(
 #-----------------------------------------------------------------------
 # open a file to write (mode "w"), and create a CSV writer object
 #-----------------------------------------------------------------------
-csvfile = file(outfile, "w")
+csvfile = open(outfile, "w")
 csvwriter = csv.writer(csvfile)
 
 #-----------------------------------------------------------------------
@@ -75,12 +75,12 @@ while result_count <  num_results:
 	#-----------------------------------------------------------------------
 	# let the user know where we're up to
 	#-----------------------------------------------------------------------
-	print "got %d results" % result_count
+	print("got %d results" % result_count)
 
 #-----------------------------------------------------------------------
 # we're all finished, clean up and go home.
 #-----------------------------------------------------------------------
 csvfile.close()
 
-print "written to %s" % outfile
+print("written to %s" % outfile)
 

@@ -12,7 +12,7 @@ from twitter import *
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -31,10 +31,10 @@ query = twitter.search.tweets(q = "lazy dog")
 #-----------------------------------------------------------------------
 # How long did this query take?
 #-----------------------------------------------------------------------
-print "Search complete (%.3f seconds)" % (query["search_metadata"]["completed_in"])
+print("Search complete (%.3f seconds)" % (query["search_metadata"]["completed_in"]))
 
 #-----------------------------------------------------------------------
 # Loop through each of the results, and print its content.
 #-----------------------------------------------------------------------
 for result in query["statuses"]:
-	print "(%s) @%s %s" % (result["created_at"], result["user"]["screen_name"], result["text"])
+	print("(%s) @%s %s" % (result["created_at"], result["user"]["screen_name"], result["text"]))

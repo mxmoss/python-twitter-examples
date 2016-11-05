@@ -11,7 +11,7 @@ from twitter import *
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -35,4 +35,4 @@ results = twitter.statuses.user_timeline(screen_name = user)
 # loop through each status item, and print its content.
 #-----------------------------------------------------------------------
 for status in results:
-	print "(%s) %s" % (status["created_at"], status["text"].encode("ascii", "ignore"))
+	print("(%s) %s" % (status["created_at"], status["text"].encode("ascii", "ignore")))

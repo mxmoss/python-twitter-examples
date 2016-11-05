@@ -11,7 +11,7 @@ import time
 #-----------------------------------------------------------------------
 # this is the username we're matching against.
 #-----------------------------------------------------------------------
-username = "nplus7"
+username = "mxmoss"
 
 #-----------------------------------------------------------------------
 # sleep for this number of seconds between tweets, to ensure we
@@ -23,7 +23,7 @@ sleep_time = 1
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -51,7 +51,7 @@ for tweet in tweet_iter:
 	mentioned_users = [ mention["screen_name"] for mention in mentions ]
 
 	if username in mentioned_users:
-		print "thanking @%s for the mention" % tweet["user"]["screen_name"]
+		print("thanking @%s for the mention" % tweet["user"]["screen_name"])
 
 		#-----------------------------------------------------------------------
 		# update our status with a thank you message directed at the source.
@@ -60,8 +60,8 @@ for tweet in tweet_iter:
 		status = "@%s thanks for the mention" % tweet["user"]["screen_name"]
 		try:
 			twitter.statuses.update(status = status)
-		except Exception, e:
-			print " - failed (maybe a duplicate?): %s" % e
+		except Exception as e:
+			print(" - failed (maybe a duplicate?): %s" % e)
 
 	time.sleep(sleep_time)
 

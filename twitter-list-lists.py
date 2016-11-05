@@ -10,13 +10,13 @@ from twitter import *
 #-----------------------------------------------------------------------
 # the list of users that we want to examine
 #-----------------------------------------------------------------------
-users = [ "ideoforms", "GoldsmithsLEU", "mocost" ]
+users = [ "mxmoss", "comicsbin", "cnn" ]
 
 #-----------------------------------------------------------------------
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -29,7 +29,7 @@ twitter = Twitter(
 #-----------------------------------------------------------------------
 import pprint
 for user in users:
-	print "@%s" % (user)
+	print("@%s" % (user))
 
 	#-----------------------------------------------------------------------
 	# ...retrieve all of the lists they own.
@@ -37,4 +37,4 @@ for user in users:
 	#-----------------------------------------------------------------------
 	result = twitter.lists.list(screen_name = user)
 	for list in result:
-		print " - %s (%d members)" % (list["name"], list["member_count"])
+		print(" - %s (%d members)" % (list["name"], list["member_count"]))

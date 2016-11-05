@@ -7,13 +7,13 @@
 
 from twitter import *
 
-user = "ideoforms"
+user = "mxmoss"
 
 #-----------------------------------------------------------------------
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -31,11 +31,11 @@ results = twitter.statuses.user_timeline(screen_name = user)
 # loop through each of my statuses, and print its content
 #-----------------------------------------------------------------------
 for status in results:
-	print "@%s %s" % (user, status["text"])
+	print("@%s %s" % (user, status["text"]))
 
 	#-----------------------------------------------------------------------
 	# do a new query: who has RT'd this tweet?
 	#-----------------------------------------------------------------------
 	retweets = twitter.statuses.retweets._id(_id = status["id"])
 	for retweet in retweets:
-		print " - retweeted by %s" % (retweet["user"]["screen_name"])
+		print(" - retweeted by %s" % (retweet["user"]["screen_name"]))

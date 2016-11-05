@@ -11,7 +11,7 @@ from twitter import *
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -29,4 +29,4 @@ results = twitter.users.search(q = '"New Cross"')
 # loop through each of the users, and print their details
 #-----------------------------------------------------------------------
 for user in results:
-	print "@%s (%s): %s" % (user["screen_name"], user["name"], user["location"])
+	print("@%s (%s): %s" % (user["screen_name"], user["name"], user["location"]))

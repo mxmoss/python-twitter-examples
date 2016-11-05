@@ -11,7 +11,7 @@ from twitter import *
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -28,8 +28,8 @@ twitter = Twitter(
 #-----------------------------------------------------------------------
 results = twitter.trends.place(_id = 23424975)
 
-print "UK Trends"
+print("UK Trends")
 
 for location in results:
 	for trend in location["trends"]:
-		print " - %s" % trend["name"]
+		print(" - %s" % trend["name"])

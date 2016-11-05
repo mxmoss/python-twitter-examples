@@ -13,7 +13,7 @@ created_at_format = '%a %b %d %H:%M:%S +0000 %Y'
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -41,5 +41,5 @@ mean_dt = total_dt / len(results)
 #-----------------------------------------------------------------------
 # print the average of the differences
 #-----------------------------------------------------------------------
-print "Average tweeting rate for '%s' between %s and %s: %.3fs" % (terms, results[-1]["created_at"], results[ 0]["created_at"], mean_dt)
+print("Average tweeting rate for '%s' between %s and %s: %.3fs" % (terms, results[-1]["created_at"], results[ 0]["created_at"], mean_dt))
 

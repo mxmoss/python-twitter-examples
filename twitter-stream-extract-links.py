@@ -12,7 +12,7 @@ from twitter import *
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -31,6 +31,6 @@ for tweet in tweet_iter:
 	#-----------------------------------------------------------------------
 	# print out the contents, and any URLs found inside
 	#-----------------------------------------------------------------------
-	print "(%s) @%s %s" % (tweet["created_at"], tweet["user"]["screen_name"], tweet["text"])
+	print("(%s) @%s %s" % (tweet["created_at"], tweet["user"]["screen_name"], tweet["text"]))
 	for url in tweet["entities"]["urls"]:
-		print " - found URL: %s" % url["expanded_url"]
+		print(" - found URL: %s" % url["expanded_url"])

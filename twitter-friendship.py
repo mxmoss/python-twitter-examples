@@ -11,7 +11,7 @@ from twitter import *
 # load our API credentials 
 #-----------------------------------------------------------------------
 config = {}
-execfile("config.py", config)
+exec(compile(open("config.py").read(), "config.py", 'exec'), config)
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -38,6 +38,6 @@ result = twitter.friendships.show(source_screen_name = source,
 following = result["relationship"]["target"]["following"]
 follows   = result["relationship"]["target"]["followed_by"]
 
-print "%s following %s: %s" % (source, target, follows)
-print "%s following %s: %s" % (target, source, following)
+print("%s following %s: %s" % (source, target, follows))
+print("%s following %s: %s" % (target, source, following))
 
